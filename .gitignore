@@ -1,0 +1,9 @@
+.streamlit/secrets.toml
+billing-dashboard-sa.json
+*service-account*.json
+*credentials*.json
+__pycache__/
+.env
+venv/
+.venv/
+*.pyc
