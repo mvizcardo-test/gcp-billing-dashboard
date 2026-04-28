@@ -51,7 +51,7 @@ def get_costs_by_project(days: int = 30) -> pd.DataFrame:
     GROUP BY project.id, currency
     ORDER BY net_cost DESC
     """
-    df = _bq_client().query(query).to_dataframe()
+    df = _bq_client().query(query).to_dataframe(create_bqstorage_client=False)
     return _add_app_name(df)
 
 
@@ -68,7 +68,7 @@ def get_costs_by_service(days: int = 30) -> pd.DataFrame:
     GROUP BY project.id, service, currency
     ORDER BY net_cost DESC
     """
-    df = _bq_client().query(query).to_dataframe()
+    df = _bq_client().query(query).to_dataframe(create_bqstorage_client=False)
     return _add_app_name(df)
 
 
@@ -85,5 +85,5 @@ def get_daily_trend(days: int = 30) -> pd.DataFrame:
     GROUP BY date, project.id, currency
     ORDER BY date ASC
     """
-    df = _bq_client().query(query).to_dataframe()
+    df = _bq_client().query(query).to_dataframe(create_bqstorage_client=False)
     return _add_app_name(df)
