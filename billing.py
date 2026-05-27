@@ -9,6 +9,8 @@ PROJECT_NAMES = {
     "backupmv":                  "BackupMV",
     "stocktracker-presentacion": "StockTracker Pro",
     "taf-gobierno-de-datos":     "TAF - Gobierno de Datos",
+    "naty-cmo":                  "Naty CMO",
+    "remates-presentacion":      "Remates / Oportunidades",
 }
 
 # SQL expression for net cost (usage cost minus credits)
@@ -35,7 +37,7 @@ def _table() -> str:
 
 
 def _add_app_name(df: pd.DataFrame) -> pd.DataFrame:
-    df["app_name"] = df["project_id"].map(PROJECT_NAMES).fillna(df["project_id"])
+    df["app_name"] = df["project_id"].map(PROJECT_NAMES).fillna(df["project_id"]).fillna("(sin proyecto)")
     return df
 
 

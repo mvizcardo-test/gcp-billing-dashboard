@@ -73,7 +73,7 @@ c4.metric("🔢 Proyectos activos", n_apps)
 st.divider()
 
 # Color consistente entre gráficos
-all_apps  = sorted(df_projects["app_name"].unique().tolist())
+all_apps  = sorted(df_projects["app_name"].dropna().unique().tolist())
 palette   = px.colors.qualitative.Set2
 color_map = {app: palette[i % len(palette)] for i, app in enumerate(all_apps)}
 
@@ -100,7 +100,7 @@ with col_bar:
 
 with col_pie:
     st.subheader("Servicios")
-    app_options = ["Todos"] + sorted(proj["app_name"].unique().tolist())
+    app_options = ["Todos"] + sorted(proj["app_name"].dropna().unique().tolist())
     selected_app = st.selectbox("Ver servicios de:", app_options)
 
     if selected_app == "Todos":
